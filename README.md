@@ -19,3 +19,24 @@ The player has three lives and the game ends when either they run out of lives o
 - Start virtual environment: `source {ENV_NAME}/bin/activate`
 - Install required packages: `python3 -m pip install -r requirements.txt`
 - Confirm packages are connected by starting PyGame: `python3 -m pygame.examples.aliens`
+
+
+### Best Practice Bonus Points
+- [] Test Coverage
+- [] Pythonic best-practices
+
+### Checklist
+- [] Game starts as expected
+- [] Game is playable with moving characters 
+- [] Collision events work as expected
+- [] Player wins and game ends
+- [] Player loses and game ends
+- [] Endgame state
+- [] Level progression
+- [] Random bonuses
+
+
+### Extensions in the form of future PRs
+- Colour Customisation
+- Deployed exectuable
+- Reinforcement Learning algorithm 
