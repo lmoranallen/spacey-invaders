@@ -1,4 +1,4 @@
-from pygame import display, Vector2, draw, font, time, quit, QUIT, event
+from pygame import Surface, display, Vector2, draw, font, time, quit, QUIT, event
 
 from sprites.player import SpaceShip
 
@@ -10,6 +10,8 @@ CLOCK = time.Clock()
 PLAYING = True
 
 screen = display.set_mode([SCREEN_HEIGHT, SCREEN_WIDTH])
+background = Surface([20, 25])
+background.fill(BACKGROUND_COLOR)
 
 class GameScreen():
     
@@ -20,7 +22,7 @@ class GameScreen():
         screen.fill(BACKGROUND_COLOR)
 
         # initial spaceship position
-        draw.circle(screen, "orange", player.position, 20)
+        # draw.circle(screen, "orange", player.position, 20)
 
         # SCORE font
         score_text = FONT.render(f"SCORE: {player.score}",True, (255,255,255))
@@ -49,13 +51,14 @@ class GameScreen():
         PLAYING = True
         player = SpaceShip("orange", screen)
         self.initialiseGame(player)
+        display.flip()
 
         
 
         print("YOUR CHARACTER", player.lives, player.position)
 
         while PLAYING:
-
+            screen.blit(background, player.position)
             # pygame.QUIT event means the user clicked X to close your window
             for event_elem in event.get():
                 if event_elem.type == QUIT:
@@ -63,8 +66,11 @@ class GameScreen():
 
             
 
-            display.flip()
-            dt = CLOCK.tick(60)/1000
+            player.moveSpaceship(screen)
+            
+            screen.blit(player.image, player.position)
+            display.update()
+            CLOCK.tick(60)
         quit()
 
         

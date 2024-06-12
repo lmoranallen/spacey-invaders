@@ -23,7 +23,7 @@ class SpaceShip(Sprite):
     def getLives(self):
         return self.lives
     
-    def moveSpaceship(self, screen, dt):
+    def moveSpaceship(self, screen):
         keys_pressed = key.get_pressed()
 
         if (keys_pressed[K_LEFT] and self.position.x > 0.1*screen.get_width()):
@@ -31,6 +31,8 @@ class SpaceShip(Sprite):
 
         if (keys_pressed[K_RIGHT] and self.position.x < 0.9*screen.get_width()):
             self.position.x += 10
+        
+        # screen.blit(self.image, self.position)
         
 
 
